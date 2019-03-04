@@ -43,3 +43,25 @@ Node.js eliminates the waiting, and simply continues with the next request. Node
 	2.A typical event is someone trying to access a port on the server
 	3.Node.js files must be initiated on the server before having any effect
 	4.Node.js files have extension ".js"
+
+**Getting Started**
+
+We Create a Node.js file named "server.js", and add the following code:
+
+`server.js`
+
+	var http = require('http');
+
+	http.createServer(function (req, res) {
+	  res.writeHead(200, {'Content-Type': 'text/html'});
+	  res.end('Hello World!');
+	}).listen(8080);
+
+The code tells the computer to write "Hello World!" if anyone (e.g. a web browser) tries to access your computer on port 8080.
+
+	Run the server on the terminal `node server.js`
+
+Now, the computer works as a server!
+
+If anyone tries to access your computer on port 8080, they will get a "Hello World!" message in return!
+We start the internet browser, and type in the address: `http://localhost:8080` to test the it actually works.
