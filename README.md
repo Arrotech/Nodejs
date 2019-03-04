@@ -65,3 +65,53 @@ Now, the computer works as a server!
 
 If anyone tries to access your computer on port 8080, they will get a "Hello World!" message in return!
 We start the internet browser, and type in the address: `http://localhost:8080` to test the it actually works.
+
+
+**What is a Module in Node.js?**
+Consider modules to be the same as JavaScript libraries. A set of functions you want to include in your application.
+
+**Built-in Modules**
+Node.js has a set of built-in modules which you can use without any further installation.
+
+
+**Include Modules**
+To include a module, use the `require()` function with the name of the module:
+
+var http = require('http');
+
+Now the application has access to the `HTTP` module, and is able to create a server:
+
+**Create Your Own Modules**
+We can create our own modules, and easily include them in our applications. The following example creates a module that returns a date and time object:
+
+**Example**
+Creates a module that returns the current date and time:
+
+`exports.myDateTime = function () {
+  return Date();
+};`
+
+We use the exports keyword to make properties and methods available outside the module file.
+We save the code above in a file called "date_module.js"
+
+
+**Include Your Own Module**
+Now we can include and use the module in any of our Node.js files.
+
+**Example**
+We use the module "date_module" in a Node.js file:
+
+`var http = require('http');
+var dt = require('./date_module');`
+
+`http.createServer(function (req, res) {
+  res.writeHead(200, {'Content-Type': 'text/html'});
+  res.write("The date and time are currently: " + dt.myDateTime());
+  res.end();
+}).listen(8080);`
+
+We use ./ to locate the module, that means that the module is located in the same folder as the Node.js file.
+We save the code above in a file called "demo_module.js", and initiate the file:
+
+**Initiate demo_module.js:**
+Type on the terminal `node demo_module.js`
