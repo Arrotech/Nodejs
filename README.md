@@ -278,3 +278,24 @@ We Create a new file using the `writeFile()` method:
 	  if (err) throw err;
 	  console.log('Saved!');
 	});`
+
+**Update Files**
+
+The File System module has methods for updating files:
+
+	1.fs.appendFile()
+	2.fs.writeFile()
+
+The `fs.appendFile()` method appends the specified content at the end of the specified file:
+
+**Example**
+
+Append `"This is my text."` to the end of the file "newfile4.txt":
+
+	`var fs = require('fs');`
+
+	`fs.appendFile('mynewfile1.txt', ' This is my text.', function (err) {
+	  if (err) throw err;
+	  console.log('Updated!');
+	});`
+
