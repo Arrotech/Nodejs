@@ -68,13 +68,16 @@ We start the internet browser, and type in the address: `http://localhost:8080` 
 
 
 **What is a Module in Node.js?**
+
 Consider modules to be the same as JavaScript libraries. A set of functions you want to include in your application.
 
 **Built-in Modules**
+
 Node.js has a set of built-in modules which you can use without any further installation.
 
 
 **Include Modules**
+
 To include a module, use the `require()` function with the name of the module:
 
 var http = require('http');
@@ -82,9 +85,11 @@ var http = require('http');
 Now the application has access to the `HTTP` module, and is able to create a server:
 
 **Create Your Own Modules**
+
 We can create our own modules, and easily include them in our applications. The following example creates a module that returns a date and time object:
 
 **Example**
+
 Creates a module that returns the current date and time:
 
 `exports.myDateTime = function () {
@@ -96,9 +101,11 @@ We save the code above in a file called "date_module.js"
 
 
 **Include Your Own Module**
+
 Now we can include and use the module in any of our Node.js files.
 
 **Example**
+
 We use the module "date_module" in a Node.js file:
 
 `var http = require('http');
@@ -114,4 +121,32 @@ We use ./ to locate the module, that means that the module is located in the sam
 We save the code above in a file called "demo_module.js", and initiate the file:
 
 **Initiate demo_module.js:**
+
 Type on the terminal `node demo_module.js`
+
+
+**Read the Query String**
+
+The function passed into the http.createServer() has a req argument that represents the request from the client, as an object (http.IncomingMessage object).This object has a property called "url" which holds the part of the url that comes after the domain name:
+
+`demo_http_url.js`
+
+`var http = require('http');
+http.createServer(function (req, res) {
+  res.writeHead(200, {'Content-Type': 'text/html'});
+  res.write(req.url);
+  res.end();
+}).listen(8080);`
+
+**Initiate demo_http_url.js:**
+
+C:\Users\Your Name>node demo_http_url.js
+We should see two different results when opening these two addresses:
+
+http://localhost:8080/summer
+
+Will produce this result: `/summer`
+
+http://localhost:8080/winter
+
+Will produce this result: `/winter`
