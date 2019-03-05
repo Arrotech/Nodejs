@@ -266,3 +266,15 @@ We Create a new, empty file using the `open()` method:
 	  console.log('Saved!');
 	});`
 
+The `fs.writeFile()` method replaces the specified file and content if it exists. If the file does not exist, a new file, containing the specified content, will be created:
+
+**Example**
+
+We Create a new file using the `writeFile()` method:
+
+	`var fs = require('fs');`
+
+	`fs.writeFile('mynewfile3.txt', 'Hello content!', function (err) {
+	  if (err) throw err;
+	  console.log('Saved!');
+	});`
