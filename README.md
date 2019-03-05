@@ -92,9 +92,9 @@ We can create our own modules, and easily include them in our applications. The 
 
 Creates a module that returns the current date and time:
 
-`exports.myDateTime = function () {
-  return Date();
-};`
+	`exports.myDateTime = function () {
+	  return Date();
+	};`
 
 We use the exports keyword to make properties and methods available outside the module file.
 We save the code above in a file called "date_module.js"
@@ -108,14 +108,14 @@ Now we can include and use the module in any of our Node.js files.
 
 We use the module "date_module" in a Node.js file:
 
-`var http = require('http');
-var dt = require('./date_module');`
+	`var http = require('http');
+	var dt = require('./date_module');`
 
-`http.createServer(function (req, res) {
-  res.writeHead(200, {'Content-Type': 'text/html'});
-  res.write("The date and time are currently: " + dt.myDateTime());
-  res.end();
-}).listen(8080);`
+	`http.createServer(function (req, res) {
+	  res.writeHead(200, {'Content-Type': 'text/html'});
+	  res.write("The date and time are currently: " + dt.myDateTime());
+	  res.end();
+	}).listen(8080);`
 
 We use ./ to locate the module, that means that the module is located in the same folder as the Node.js file.
 We save the code above in a file called "demo_module.js", and initiate the file:
@@ -131,12 +131,12 @@ The function passed into the http.createServer() has a req argument that represe
 
 `demo_http_url.js`
 
-`var http = require('http');
-http.createServer(function (req, res) {
-  res.writeHead(200, {'Content-Type': 'text/html'});
-  res.write(req.url);
-  res.end();
-}).listen(8080);`
+	`var http = require('http');
+	http.createServer(function (req, res) {
+	  res.writeHead(200, {'Content-Type': 'text/html'});
+	  res.write(req.url);
+	  res.end();
+	}).listen(8080);`
 
 **Initiate demo_http_url.js:**
 
@@ -160,15 +160,15 @@ There are built-in modules to easily split the query string into readable parts,
 
 Split the query string into readable parts:
 
-`var http = require('http');
-var url = require('url');`
+	`var http = require('http');
+	var url = require('url');`
 
-`http.createServer(function (req, res) {
-  res.writeHead(200, {'Content-Type': 'text/html'});
-  var q = url.parse(req.url, true).query;
-  var txt = q.year + " " + q.month;
-  res.end(txt);
-}).listen(8080);`
+	`http.createServer(function (req, res) {
+	  res.writeHead(200, {'Content-Type': 'text/html'});
+	  var q = url.parse(req.url, true).query;
+	  var txt = q.year + " " + q.month;
+	  res.end(txt);
+	}).listen(8080);`
 
 We Save the code above in a file called "demo_querystring.js" and initiate the file:
 
@@ -252,3 +252,17 @@ Create a new file using the appendFile() method:
 	  if (err) throw err;
 	  console.log('Saved!');
 	});`
+
+The `fs.open()` method takes a `"flag"` as the second argument, if the flag is `"w"` for "writing", the specified file is opened for writing. If the file does not exist, an empty file is created:
+
+**Example**
+
+We Create a new, empty file using the `open()` method:
+
+	`var fs = require('fs');`
+
+	`fs.open('mynewfile2.txt', 'w', function (err, file) {
+	  if (err) throw err;
+	  console.log('Saved!');
+	});`
+
