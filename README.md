@@ -182,3 +182,73 @@ http://localhost:8080/?year=2017&month=July
 
 Will produce this result: `2017 July`
 
+
+**Node.js File System Module**
+
+Node.js as a File Server. The Node.js file system module allows you to work with the file system on your computer.
+
+To include the File System module, use the `require()` method:
+
+	`var fs = require('fs');`
+
+Common use for the File System module:
+
+	1.Read files
+	2.Create files
+	3.Update files
+	4.Delete files
+	5.Rename files
+	6.Read Files
+
+The `fs.readFile()` method is used to read files on your computer.
+
+Assume we have the following HTML file (located in the same folder as Node.js):
+
+`demofile1.html`
+
+	`<html>
+		<body>
+			<h1>Node</h1>
+			<p>Read file using Node.js.</p>
+		</body>
+	</html>`
+
+Create a Node.js file that reads the HTML file, and return the content:
+
+**Example**
+
+	`var http = require('http');
+	var fs = require('fs');
+	http.createServer(function (req, res) {
+	  fs.readFile('readFile.html', function(err, data) {
+	    res.writeHead(200, {'Content-Type': 'text/html'});
+	    res.write(data);
+	    res.end();
+	  });
+	}).listen(8080);`
+
+**Initiate readFile.js:**
+
+On the terminal `node readFile.js`. We will see the same result as the example: http://localhost:8080
+
+
+**Create Files**
+
+The File System module has methods for creating new files:
+
+	1.fs.appendFile()
+	2.fs.open()
+	3.fs.writeFile()
+
+The `fs.appendFile()` method appends specified content to a file. If the file does not exist, the file will be created:
+
+**Example**
+
+Create a new file using the appendFile() method:
+
+	`var fs = require('fs');`
+
+	`fs.appendFile('mynewfile1.txt', 'Hello content!', function (err) {
+	  if (err) throw err;
+	  console.log('Saved!');
+	});`
